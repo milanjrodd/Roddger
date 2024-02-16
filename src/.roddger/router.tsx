@@ -52,6 +52,7 @@ function serveFromDir(config: {
   return null;
 }
 
+// Change return type to ServeOptions for better DX
 export async function router(request: Request): Promise<Response> {
   const srcMatch = srcRouter.match(request);
 
