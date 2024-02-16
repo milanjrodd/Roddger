@@ -1,0 +1,20 @@
+{
+  "name": "roddger",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "bun run --watch index.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/react-dom": "^18.2.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dom/server": "react-dom/server"
+  }
+}
