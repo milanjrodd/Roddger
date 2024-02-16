@@ -1,6 +1,4 @@
-import { router } from "./src/router";
-
-// await srtStreamTest()
+import { router } from "./src/.roddger/router";
 
 Bun.serve({
   port: 3000,

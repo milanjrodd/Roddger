@@ -1,9 +1,9 @@
-import * as path from "path";
 import { statSync } from "fs";
+import * as path from "path";
 import { renderToReadableStream } from "react-dom/server";
-import { DOM } from "./.roddger/dom";
+import { DOM } from "./dom";
 
-const PROJECT_ROOT = import.meta.dir;
+const PROJECT_ROOT = path.resolve(import.meta.dir, "..");
 const PUBLIC_DIR = path.resolve(PROJECT_ROOT, "public");
 const RODDGER_DIR = path.resolve(PROJECT_ROOT, ".roddger");
 const BUILD_DIR = path.resolve(PROJECT_ROOT, "dist");
@@ -15,7 +15,6 @@ const srcRouter = new Bun.FileSystemRouter({
 
 const build = await Bun.build({
   entrypoints: [
-    RODDGER_DIR + "/dom.tsx",
     RODDGER_DIR + "/client.tsx",
     ...Object.values(srcRouter.routes),
   ],
