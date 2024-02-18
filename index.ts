@@ -2,7 +2,9 @@ import { router } from "./src/.roddger/router";
 
 Bun.serve({
   port: 3000,
-  fetch(req) {
+  fetch(req, server) {
+    if (server.upgrade(req)) return;
+
     return router(req);
   },
   websocket: {

@@ -11,25 +11,32 @@ if (!rootElement) throw new Error("Root element not found");
 
 hydrateRoot(rootElement, <Page />);
 
-// TODO: Hot Reloading
-// const socket = new WebSocket("ws://localhost:80");
-
-// // message is received
-// socket.addEventListener("message", (event) => {
-//   console.log("CLIENT: Message from server ", event.data);
-// });
-
-// // socket opened
-// socket.addEventListener("open", (event) => {
-//   socket.send("CLIENT: Hello Server!");
-// });
-
-// // socket closed
-// socket.addEventListener("close", (event) => {
-//   console.log("CLIENT: Socket closed ");
-// });
-
-// // error handler
-// socket.addEventListener("error", (event) => {
-//   console.log("Error ", event);
-// });
+// Hot Reloading for web client
+(() => {
+  const socketUrl = "ws://localhost:3000";
+  let socket = new WebSocket(socketUrl);
+  console.log(socket);
+  socket.addEventListener("close", () => {
+    const interAttemptTimeoutMilliseconds = 100;
+    const maxDisconnectedTimeMilliseconds = 3000;
+    const maxAttempts = Math.round(
+      maxDisconnectedTimeMilliseconds / interAttemptTimeoutMilliseconds
+    );
+    let attempts = 0;
+    const reloadIfCanConnect = () => {
+      attempts++;
+      if (attempts > maxAttempts) {
+        console.error("Could not reconnect to dev server.");
+        return;
+      }
+      socket = new WebSocket(socketUrl);
+      socket.addEventListener("error", () => {
+        setTimeout(reloadIfCanConnect, interAttemptTimeoutMilliseconds);
+      });
+      socket.addEventListener("open", () => {
+        location.reload();
+      });
+    };
+    reloadIfCanConnect();
+  });
+})();
