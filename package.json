@@ -1,20 +1,25 @@
 {
   "name": "roddger",
   "module": "index.ts",
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "scripts": {
-    "dev": "bun run --watch index.ts"
-  },
   "type": "module",
+  "scripts": {
+    "dev": "bun run --watch index.ts",
+    "db:migrate": "bun run src/database/scripts/migrate.ts",
+    "db:drop-migration": "bunx drizzle-kit drop",
+    "db:seed": "bun run src/database/scripts/seed.ts"
+  },
   "dependencies": {
     "@types/react-dom": "^18.2.19",
+    "drizzle-orm": "^0.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dom/server": "react-dom/server"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.20.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }

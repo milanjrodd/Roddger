@@ -1,4 +1,9 @@
 import { router } from "./src/.roddger/router";
+import { db } from "./src/database/db";
+import { movies } from "./src/database/schema/movies";
+
+const result = await db.select().from(movies);
+console.log(result);
 
 Bun.serve({
   port: 3000,

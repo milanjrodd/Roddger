@@ -21,6 +21,7 @@ const build = await Bun.build({
   outdir: BUILD_DIR,
   target: "browser",
   splitting: true,
+  sourcemap: "external",
 });
 
 build.logs.forEach((log) => {
