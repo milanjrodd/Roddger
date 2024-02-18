@@ -11,6 +11,10 @@ export const Page = ({}) => {
     <>
       <div>Hello, thats my blog!</div>
       <button onClick={buttonHandler}>{state} Click</button>
+      <a href="/blog">Go to blog</a>
+      <div>
+        <a href="/about">About me</a>
+      </div>
     </>
   );
 };
