@@ -1,6 +1,6 @@
-import { router } from "./src/.roddger/router";
-import { db } from "./src/database/db";
-import { movies } from "./src/database/schema/movies";
+import { router } from "@roddger/router";
+import { db } from "@database/db";
+import { movies } from "@database/schema/movies";
 
 const result = await db.select().from(movies);
 console.log(result);

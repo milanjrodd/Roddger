@@ -1,7 +1,7 @@
 import { statSync } from "fs";
 import * as path from "path";
 import { renderToReadableStream } from "react-dom/server";
-import { DOM } from "./dom";
+import { DOM } from "@roddger/dom";
 
 const PROJECT_ROOT = path.resolve(import.meta.dir, "..");
 const PUBLIC_DIR = path.resolve(PROJECT_ROOT, "public");
