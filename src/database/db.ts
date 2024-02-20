@@ -10,6 +10,6 @@ sqlite.exec("PRAGMA journal_mode = WAL;"); // Enable WAL mode
 export const db = drizzle(sqlite);
 
 // Migrate the database
-console.log("Migrating database...");
+console.log("Checking migrations...");
 const migrationsFolderPath = path.resolve(import.meta.dir, "./migrations");
 await migrate(db, { migrationsFolder: migrationsFolderPath });
