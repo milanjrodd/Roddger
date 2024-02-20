@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun run --watch index.ts",
-    "db:migrate": "bun run src/database/scripts/migrate.ts",
-    "db:drop-migration": "bunx drizzle-kit drop",
+    "db:migrate": "drizzle-kit generate:sqlite",
+    "db:drop-migration": "drizzle-kit drop",
     "db:seed": "bun run src/database/scripts/seed.ts"
   },
   "dependencies": {

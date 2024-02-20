@@ -154,7 +154,7 @@ dist
 
 #SQLite files
 
-*.sqlite
+*.sqlite*
 
 # TernJS port file
 
